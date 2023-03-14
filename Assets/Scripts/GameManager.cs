@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject instractionPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject loosePanel;
 
     void Start()
     {
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
         instractionPanel.SetActive(false);
         gamePanel.SetActive(false);
         winPanel.SetActive(false);
+        loosePanel.SetActive(false);
     }
 
     public void ShowInstraction() {
@@ -35,6 +37,11 @@ public class GameManager : MonoBehaviour
     public void WinPanelActivate()
     {
         winPanel.SetActive(true);
+    }
+
+    public void LoosePanelActivate()
+    {
+        loosePanel.SetActive(true);
     }
 
 }
