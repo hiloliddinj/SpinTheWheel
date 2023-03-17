@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        startPanel.SetActive(true);
-        instractionPanel.SetActive(false);
-        gamePanel.SetActive(false);
-        winPanel.SetActive(false);
-        loosePanel.SetActive(false);
+        //startPanel.SetActive(true);
+        //instractionPanel.SetActive(false);
+        //gamePanel.SetActive(false);
+        //winPanel.SetActive(false);
+        //loosePanel.SetActive(false);
     }
 
     public void ShowInstraction() {
