@@ -9,6 +9,8 @@ public class PinController : MonoBehaviour
     private Animator _animator;
     private AudioSource _audioSource;
 
+    public static float animationSpeed = 1.0f;
+
     void Start()
     {
         _animator = pin.GetComponent<Animator>();
@@ -17,9 +19,9 @@ public class PinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HELLO");
         if (other.gameObject.CompareTag("handle"))
         {
+            _animator.speed = animationSpeed;
             _animator.SetTrigger("swing");
             _audioSource.Play();
         }

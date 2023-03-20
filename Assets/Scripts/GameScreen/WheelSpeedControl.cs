@@ -1,7 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WheelControl : MonoBehaviour
+public class WheelSpeedControl : MonoBehaviour
 {
 
     [SerializeField] private GameObject gameManager;
@@ -29,10 +31,10 @@ public class WheelControl : MonoBehaviour
         _slider.value = 0;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        RotateWheel();
-        UpdateSldier();
+        RotateWheel(Get_gameManager());
+        UpdateSlider();
     }
 
     public void StartSlider()
@@ -45,19 +47,25 @@ public class WheelControl : MonoBehaviour
         isPressedButtonFinished = true;
     }
 
-    private void UpdateSldier()
+    private void UpdateSlider()
     {
-        if (isPressedButtonStarted && !isPressedButtonFinished) {
+        if (isPressedButtonStarted && !isPressedButtonFinished)
+        {
             _slider.value += 1f * Time.deltaTime;
+
             if (_slider.value == 1)
             {
                 _slider.value = 0;
             }
         }
-        
     }
 
-    private void RotateWheel()
+    private GameManager Get_gameManager()
+    {
+        return _gameManager;
+    }
+
+    private void RotateWheel(GameManager _gameManager)
     {
         if (isPressedButtonFinished)
         {
@@ -66,24 +74,34 @@ public class WheelControl : MonoBehaviour
                 _rotationSpeedIsSet = true;
                 _rotationSpeed = _slider.value * _maxRotationSpeed;
             }
-            
+
             if (rotating && _rotationSpeed > 0)
             {
                 _rotationSpeed -= _rotationSpeedDecrease * Time.deltaTime;
-                transform.Rotate(0, 0, _rotationSpeed * Time.deltaTime);
+
+                if (_rotationSpeed < 25)
+                {
+                    PinController.animationSpeed = 1.0f;
+                } else
+                {
+                    PinController.animationSpeed = _rotationSpeed / 20;
+                }
+
+                gameObject.transform.Rotate(0, 0, _rotationSpeed * Time.deltaTime);
             }
 
             if (_rotationSpeed <= 0)
             {
                 if (_slider.value < 0.5f)
                 {
-                    _gameManager.LoosePanelActivate();
+                    _gameManager.Invoke("LoosePanelActivate", 2);
                 }
                 else
                 {
                     _gameManager.WinPanelActivate();
+                    _gameManager.Invoke("WinPanelActivate", 2);
                 }
-            } 
+            }
         }
     }
 }

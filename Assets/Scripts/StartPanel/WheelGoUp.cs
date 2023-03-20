@@ -29,13 +29,15 @@ public class WheelGoUp : MonoBehaviour
     {
         if (startToGoUp)
         {
-            Vector3 target = new Vector3(transform.position.x, 1.9f, transform.position.z);
+            Vector3 target = new Vector3(
+                transform.position.x,
+                0.2f,
+                transform.position.z);
 
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 target,
-                5f * Time.deltaTime
-                );
+                5f * Time.deltaTime);
         }
 
         

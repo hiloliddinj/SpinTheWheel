@@ -9,29 +9,37 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject loosePanel;
 
+    [SerializeField] private GameObject startScreen;
+    [SerializeField] private GameObject gameScreen;
+
     void Start()
     {
         //startPanel.SetActive(true);
         //instractionPanel.SetActive(false);
         //gamePanel.SetActive(false);
-        //winPanel.SetActive(false);
-        //loosePanel.SetActive(false);
+        
+
+        startScreen.SetActive(true);
+        gameScreen.SetActive(false);
+        instractionPanel.SetActive(false);
+        winPanel.SetActive(false);
+        loosePanel.SetActive(false);
     }
 
     public void ShowInstraction() {
-        startPanel.SetActive(false);
+        startScreen.SetActive(false);
         instractionPanel.SetActive(true);
     }
 
     public void GoToGameScreen()
     {
         instractionPanel.SetActive(false);
-        gamePanel.SetActive(true);
+        gameScreen.SetActive(true);
     }
 
     public void StartGame()
     {
-        WheelControl.rotating = true;
+        WheelSpeedControl.rotating = true;
     }
 
     public void WinPanelActivate()
