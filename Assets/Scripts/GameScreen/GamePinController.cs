@@ -19,10 +19,10 @@ public class GamePinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("handle"))
+        if (other.gameObject.CompareTag(TagConst.handle))
         {
             _animator.speed = animationSpeed;
-            _animator.SetTrigger("swing");
+            _animator.SetTrigger(AnimeConst.swing);
             _audioSource.Play();
         }
     }

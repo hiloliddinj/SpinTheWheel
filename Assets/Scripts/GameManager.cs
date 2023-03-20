@@ -3,9 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject instractionPanel;
-    [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject loosePanel;
 
@@ -14,11 +12,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //startPanel.SetActive(true);
-        //instractionPanel.SetActive(false);
-        //gamePanel.SetActive(false);
-        
-
         startScreen.SetActive(true);
         gameScreen.SetActive(false);
         instractionPanel.SetActive(false);
@@ -44,11 +37,13 @@ public class GameManager : MonoBehaviour
 
     public void WinPanelActivate()
     {
+        gameScreen.SetActive(false);
         winPanel.SetActive(true);
     }
 
     public void LoosePanelActivate()
     {
+        gameScreen.SetActive(false);
         loosePanel.SetActive(true);
     }
 

@@ -15,9 +15,9 @@ public class PinController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("handle"))
+        if (other.gameObject.CompareTag(TagConst.handle))
         {
-            _animator.SetTrigger("swing");
+            _animator.SetTrigger(AnimeConst.swing);
         }
     }
 

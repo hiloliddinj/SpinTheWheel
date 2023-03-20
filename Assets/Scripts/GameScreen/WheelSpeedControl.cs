@@ -94,12 +94,11 @@ public class WheelSpeedControl : MonoBehaviour
             {
                 if (_slider.value < 0.5f)
                 {
-                    _gameManager.Invoke("LoosePanelActivate", 3);
+                    _gameManager.Invoke(methodName: MethodConst.gMLoosePanelActivate, time: 1);
                 }
                 else
                 {
-                    _gameManager.WinPanelActivate();
-                    _gameManager.Invoke("WinPanelActivate", 3);
+                    _gameManager.Invoke(methodName: MethodConst.gMWinPanelActivate, 1);
                 }
             }
         }
