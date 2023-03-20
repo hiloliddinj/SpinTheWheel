@@ -81,10 +81,10 @@ public class WheelSpeedControl : MonoBehaviour
 
                 if (_rotationSpeed < 25)
                 {
-                    PinController.animationSpeed = 1.0f;
+                    GamePinController.animationSpeed = 1.0f;
                 } else
                 {
-                    PinController.animationSpeed = _rotationSpeed / 20;
+                    GamePinController.animationSpeed = _rotationSpeed / 20;
                 }
 
                 gameObject.transform.Rotate(0, 0, _rotationSpeed * Time.deltaTime);
@@ -94,12 +94,12 @@ public class WheelSpeedControl : MonoBehaviour
             {
                 if (_slider.value < 0.5f)
                 {
-                    _gameManager.Invoke("LoosePanelActivate", 2);
+                    _gameManager.Invoke("LoosePanelActivate", 3);
                 }
                 else
                 {
                     _gameManager.WinPanelActivate();
-                    _gameManager.Invoke("WinPanelActivate", 2);
+                    _gameManager.Invoke("WinPanelActivate", 3);
                 }
             }
         }
